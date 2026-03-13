@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import useSWR from "swr";
 import { Navbar } from "@/components/navbar";
@@ -9,9 +9,16 @@ import { AQICard, AQICardSkeleton } from "@/components/aqi-card";
 import { RankingTable, RankingTableSkeleton } from "@/components/ranking-table";
 import { TrendChart, TrendChartSkeleton } from "@/components/trend-chart";
 import { AnimatedCounter } from "@/components/animated-counter";
+import { PollutionMapSkeleton } from "@/components/pollution-map";
 import { CityAQI, TrendData } from "@/lib/data";
 import { Activity, Wind, Droplets, ThermometerSun, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+// Dynamic import for Leaflet map (SSR disabled)
+const PollutionMap = dynamic(
+  () => import("@/components/pollution-map").then((mod) => mod.PollutionMap),
+  { ssr: false, loading: () => <PollutionMapSkeleton /> }
+);
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -130,6 +137,13 @@ export default function DashboardPage() {
                       <AQICard key={city.id} city={city} index={index} />
                     ))}
               </div>
+
+              {/* Interactive Pollution Map */}
+              {aqiLoading ? (
+                <PollutionMapSkeleton />
+              ) : (
+                <PollutionMap cities={cities} />
+              )}
 
               {/* Trend Chart */}
               <div className="rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm p-5">

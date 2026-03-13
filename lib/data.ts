@@ -15,6 +15,8 @@ export interface CityAQI {
   temperature: number;
   humidity: number;
   lastUpdated: string;
+  lat: number;
+  lng: number;
 }
 
 export interface TrendData {
@@ -74,6 +76,8 @@ export const mockCities: CityAQI[] = [
     temperature: 18,
     humidity: 65,
     lastUpdated: new Date().toISOString(),
+    lat: 35.6762,
+    lng: 139.6503,
   },
   {
     id: '2',
@@ -90,6 +94,8 @@ export const mockCities: CityAQI[] = [
     temperature: 32,
     humidity: 45,
     lastUpdated: new Date().toISOString(),
+    lat: 28.6139,
+    lng: 77.2090,
   },
   {
     id: '3',
@@ -106,6 +112,8 @@ export const mockCities: CityAQI[] = [
     temperature: 12,
     humidity: 78,
     lastUpdated: new Date().toISOString(),
+    lat: 51.5074,
+    lng: -0.1278,
   },
   {
     id: '4',
@@ -122,6 +130,8 @@ export const mockCities: CityAQI[] = [
     temperature: 22,
     humidity: 55,
     lastUpdated: new Date().toISOString(),
+    lat: 39.9042,
+    lng: 116.4074,
   },
   {
     id: '5',
@@ -138,6 +148,8 @@ export const mockCities: CityAQI[] = [
     temperature: 24,
     humidity: 62,
     lastUpdated: new Date().toISOString(),
+    lat: -33.8688,
+    lng: 151.2093,
   },
   {
     id: '6',
@@ -154,6 +166,8 @@ export const mockCities: CityAQI[] = [
     temperature: 26,
     humidity: 48,
     lastUpdated: new Date().toISOString(),
+    lat: 34.0522,
+    lng: -118.2437,
   },
   {
     id: '7',
@@ -170,6 +184,8 @@ export const mockCities: CityAQI[] = [
     temperature: 34,
     humidity: 72,
     lastUpdated: new Date().toISOString(),
+    lat: 19.0760,
+    lng: 72.8777,
   },
   {
     id: '8',
@@ -186,6 +202,8 @@ export const mockCities: CityAQI[] = [
     temperature: 15,
     humidity: 68,
     lastUpdated: new Date().toISOString(),
+    lat: 48.8566,
+    lng: 2.3522,
   },
 ];
 
