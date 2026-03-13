@@ -9,7 +9,7 @@ import { AQICard, AQICardSkeleton } from "@/components/aqi-card";
 import { RankingTable, RankingTableSkeleton } from "@/components/ranking-table";
 import { TrendChart, TrendChartSkeleton } from "@/components/trend-chart";
 import { AnimatedCounter } from "@/components/animated-counter";
-import { PollutionMapSkeleton } from "@/components/pollution-map";
+import { PollutionMapSkeleton } from "@/components/pollution-map-skeleton";
 import { CityAQI, TrendData } from "@/lib/data";
 import { Activity, Wind, Droplets, ThermometerSun, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
