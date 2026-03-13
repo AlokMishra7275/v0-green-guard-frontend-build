@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Leaf, Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
+import { Leaf, Mail, Lock, ArrowRight, Eye, EyeOff, ChevronRight } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -37,7 +37,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background flex relative">
+      {/* Top Right Navigation */}
+      <div className="absolute top-6 right-6 z-20 flex items-center gap-3">
+        <span className="text-sm text-muted-foreground hidden sm:inline">
+          Don&apos;t have an account?
+        </span>
+        <Link href="/signup">
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+            Get Started
+            <ChevronRight className="h-4 w-4 ml-1" />
+          </Button>
+        </Link>
+      </div>
+
       {/* Left Side - Decorative */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-accent/20" />

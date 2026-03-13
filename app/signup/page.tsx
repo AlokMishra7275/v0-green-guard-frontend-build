@@ -66,7 +66,19 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background flex relative">
+      {/* Top Right Navigation */}
+      <div className="absolute top-6 right-6 z-20 flex items-center gap-3">
+        <span className="text-sm text-muted-foreground hidden sm:inline">
+          Already have an account?
+        </span>
+        <Link href="/login">
+          <Button variant="outline" className="border-border/50 hover:bg-secondary/50">
+            Sign in
+          </Button>
+        </Link>
+      </div>
+
       {/* Left Side - Decorative */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-accent/20" />
