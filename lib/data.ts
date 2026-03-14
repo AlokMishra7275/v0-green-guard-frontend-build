@@ -14,6 +14,7 @@ export interface CityAQI {
   co: number;
   temperature: number;
   humidity: number;
+  windSpeed: number;
   lastUpdated: string;
   lat: number;
   lng: number;
@@ -75,6 +76,7 @@ export const mockCities: CityAQI[] = [
     co: 0.4,
     temperature: 18,
     humidity: 65,
+    windSpeed: 8.2,
     lastUpdated: new Date().toISOString(),
     lat: 35.6762,
     lng: 139.6503,
@@ -93,6 +95,7 @@ export const mockCities: CityAQI[] = [
     co: 1.8,
     temperature: 32,
     humidity: 45,
+    windSpeed: 12.5,
     lastUpdated: new Date().toISOString(),
     lat: 28.6139,
     lng: 77.2090,
@@ -111,6 +114,7 @@ export const mockCities: CityAQI[] = [
     co: 0.5,
     temperature: 12,
     humidity: 78,
+    windSpeed: 15.3,
     lastUpdated: new Date().toISOString(),
     lat: 51.5074,
     lng: -0.1278,
@@ -129,6 +133,7 @@ export const mockCities: CityAQI[] = [
     co: 1.5,
     temperature: 22,
     humidity: 55,
+    windSpeed: 6.8,
     lastUpdated: new Date().toISOString(),
     lat: 39.9042,
     lng: 116.4074,
@@ -147,6 +152,7 @@ export const mockCities: CityAQI[] = [
     co: 0.2,
     temperature: 24,
     humidity: 62,
+    windSpeed: 11.4,
     lastUpdated: new Date().toISOString(),
     lat: -33.8688,
     lng: 151.2093,
@@ -165,6 +171,7 @@ export const mockCities: CityAQI[] = [
     co: 0.8,
     temperature: 26,
     humidity: 48,
+    windSpeed: 9.6,
     lastUpdated: new Date().toISOString(),
     lat: 34.0522,
     lng: -118.2437,
@@ -183,6 +190,7 @@ export const mockCities: CityAQI[] = [
     co: 2.2,
     temperature: 34,
     humidity: 72,
+    windSpeed: 10.2,
     lastUpdated: new Date().toISOString(),
     lat: 19.0760,
     lng: 72.8777,
@@ -201,6 +209,7 @@ export const mockCities: CityAQI[] = [
     co: 0.4,
     temperature: 15,
     humidity: 68,
+    windSpeed: 7.9,
     lastUpdated: new Date().toISOString(),
     lat: 48.8566,
     lng: 2.3522,

@@ -49,23 +49,23 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Data Sources */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Resources</h4>
+            <h4 className="font-semibold text-foreground mb-4">Data Sources</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  Documentation
+                  OpenWeather API
                 </span>
               </li>
               <li>
                 <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  API Reference
+                  AQI Monitoring
                 </span>
               </li>
               <li>
                 <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  Support
+                  EPA Stations
                 </span>
               </li>
             </ul>
