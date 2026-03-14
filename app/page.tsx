@@ -68,11 +68,6 @@ export default function LandingPage() {
               </span>
             </Link>
             <div className="flex items-center gap-4">
-              <Link href="/login">
-                <Button variant="ghost" className="hidden sm:flex">
-                  Sign in
-                </Button>
-              </Link>
               <Link href="/signup">
                 <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
                   Get Started
