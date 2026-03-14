@@ -17,7 +17,9 @@ const tips = [
 ];
 
 export function SustainabilityTips() {
-  const tip = tips[Math.floor(Math.random() * tips.length)];
+  // Use date-based index for consistent tip selection across server and client
+  const dateIndex = Math.floor(new Date().getDate() / 3);
+  const tip = tips[dateIndex % tips.length];
 
   return (
     <motion.div
