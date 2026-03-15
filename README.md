@@ -24,6 +24,33 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Backend (API + Auth + Database)
+
+This repository includes a Node.js backend via **Next.js API routes** (under `app/api/`) and a SQLite database managed by **Prisma**.
+
+To get the backend running:
+
+1. Copy `.env.example` to `.env` and update the values if you want:
+
+```bash
+cp .env.example .env
+```
+
+2. Generate the Prisma client and apply the database schema:
+
+```bash
+npm run db:dev
+```
+
+You can then call the API endpoints:
+
+- `POST /api/auth/register` → create user
+- `POST /api/auth/login` → login and set an HTTP-only cookie
+- `GET /api/auth/me` → get authenticated user
+- `POST /api/auth/logout` → clear auth cookie
+
+The frontend can use `hooks/useAuth.ts` for a simple client-side auth helper.
+
 ## Learn More
 
 To learn more, take a look at the following resources:

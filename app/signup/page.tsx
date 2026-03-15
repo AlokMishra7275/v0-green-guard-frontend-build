@@ -53,14 +53,26 @@ export default function SignupPage() {
 
     setIsLoading(true);
 
-    // Simulate registration delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    // Mock validation - in production, this would call an auth API
-    if (name && email && password) {
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data?.error ?? "Registration failed. Please try again.");
+        return;
+      }
+
       router.push("/dashboard");
-    } else {
-      setError("Please fill in all fields");
+    } catch (err) {
+      setError("Network error. Please try again.");
+    } finally {
       setIsLoading(false);
     }
   };
