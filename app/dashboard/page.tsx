@@ -10,6 +10,8 @@ import { RankingTable, RankingTableSkeleton } from "@/components/ranking-table";
 import { TrendChart, TrendChartSkeleton } from "@/components/trend-chart";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { PollutionMapSkeleton } from "@/components/pollution-map-skeleton";
+import { PollutionAlert } from "@/components/pollution-alert";
+import { SustainabilityTips } from "@/components/sustainability-tips";
 import { CityAQI, TrendData } from "@/lib/data";
 import { Activity, Wind, Droplets, ThermometerSun, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -51,11 +53,16 @@ export default function DashboardPage() {
     ? Math.round(cities.reduce((sum, city) => sum + city.humidity, 0) / cities.length)
     : 0;
 
+  const avgWindSpeed = cities.length
+    ? (cities.reduce((sum, city) => sum + city.windSpeed, 0) / cities.length).toFixed(1)
+    : 0;
+
   const stats = [
     { icon: Activity, label: "Average AQI", value: avgAqi, suffix: "" },
     { icon: Wind, label: "Avg PM2.5", value: avgPm25, suffix: " µg/m³" },
     { icon: ThermometerSun, label: "Avg Temperature", value: avgTemp, suffix: "°C" },
     { icon: Droplets, label: "Avg Humidity", value: avgHumidity, suffix: "%" },
+    { icon: Wind, label: "Avg Wind Speed", value: avgWindSpeed, suffix: " m/s" },
   ];
 
   return (
@@ -64,6 +71,13 @@ export default function DashboardPage() {
       
       <main className="flex-1">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+          {/* Pollution Alert */}
+          {!aqiLoading && cities.length > 0 && (
+            <div className="mb-6">
+              <PollutionAlert cities={cities} />
+            </div>
+          )}
+
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
             <div>
@@ -90,7 +104,7 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
+            className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8"
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -163,6 +177,9 @@ export default function DashboardPage() {
 
             {/* Ranking Sidebar */}
             <div className="space-y-6">
+              {/* Sustainability Tips */}
+              <SustainabilityTips />
+
               {aqiLoading ? (
                 <RankingTableSkeleton />
               ) : (

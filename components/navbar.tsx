@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Leaf, BarChart3, TrendingUp, Brain, Menu, X, LayoutDashboard } from "lucide-react";
+import { Leaf, BarChart3, TrendingUp, Brain, Menu, X, LayoutDashboard, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LiveDataIndicator } from "@/components/live-data-indicator";
 
 const navLinks = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -63,19 +64,25 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </Button>
+          {/* Right Side - Live Indicator and Menu */}
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:block">
+              <LiveDataIndicator />
+            </div>
+            
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
 

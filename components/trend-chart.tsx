@@ -60,16 +60,19 @@ export function TrendChart({ data, height = 200 }: TrendChartProps) {
 }
 
 export function TrendChartSkeleton({ height = 200 }: { height?: number }) {
+  // Predefined heights to avoid hydration mismatch
+  const barHeights = [45, 65, 52, 78, 48, 72, 58, 85, 62, 75, 55, 70];
+
   return (
     <div className="animate-pulse" style={{ height }}>
       <div className="h-full w-full bg-muted/30 rounded-lg flex items-end justify-around p-4 gap-2">
-        {Array.from({ length: 12 }).map((_, i) => (
+        {barHeights.map((barHeight, i) => (
           <div
             key={i}
             className="bg-muted/50 rounded-t"
             style={{
               width: '6%',
-              height: `${30 + Math.random() * 50}%`,
+              height: `${barHeight}%`,
             }}
           />
         ))}

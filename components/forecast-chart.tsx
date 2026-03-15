@@ -97,16 +97,22 @@ export function ForecastChart({ data, height = 300 }: ForecastChartProps) {
 }
 
 export function ForecastChartSkeleton({ height = 300 }: { height?: number }) {
+  // Predefined heights based on sine wave to avoid hydration mismatch
+  const barHeights = [
+    32, 38, 42, 45, 46, 44, 40, 35, 32, 35, 40, 45,
+    50, 52, 50, 45, 40, 35, 32, 35, 40, 45, 48, 45
+  ];
+
   return (
     <div className="animate-pulse" style={{ height }}>
       <div className="h-full w-full bg-muted/30 rounded-lg flex items-end justify-around p-4 gap-1">
-        {Array.from({ length: 24 }).map((_, i) => (
+        {barHeights.map((barHeight, i) => (
           <div
             key={i}
             className="bg-muted/50 rounded-t"
             style={{
               width: '3%',
-              height: `${20 + Math.sin(i / 3) * 30 + Math.random() * 20}%`,
+              height: `${barHeight}%`,
             }}
           />
         ))}

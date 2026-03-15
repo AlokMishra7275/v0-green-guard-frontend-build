@@ -67,17 +67,7 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen bg-background flex relative">
-      {/* Top Right Navigation */}
-      <div className="absolute top-6 right-6 z-20 flex items-center gap-3">
-        <span className="text-sm text-muted-foreground hidden sm:inline">
-          Already have an account?
-        </span>
-        <Link href="/login">
-          <Button variant="outline" className="border-border/50 hover:bg-secondary/50">
-            Sign in
-          </Button>
-        </Link>
-      </div>
+
 
       {/* Left Side - Decorative */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
@@ -298,17 +288,7 @@ export default function SignupPage() {
               </Button>
             </form>
 
-            <div className="mt-6 text-center">
-              <p className="text-sm text-muted-foreground">
-                Already have an account?{" "}
-                <Link
-                  href="/login"
-                  className="text-primary hover:text-primary/80 font-medium transition-colors"
-                >
-                  Sign in
-                </Link>
-              </p>
-            </div>
+
           </div>
         </motion.div>
       </div>
