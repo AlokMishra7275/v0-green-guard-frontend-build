@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "echo \"No lint configured. Install ESLint or add a config file to enable.\"",
     "prisma": "prisma",
+    "postinstall": "prisma generate",
     "db:dev": "prisma migrate dev --name init",
     "db:push": "prisma db push"
   },
