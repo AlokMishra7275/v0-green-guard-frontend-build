@@ -74,6 +74,7 @@
     "@types/node": "^22",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "pnpm": "^10.32.1",
     "postcss": "^8.5",
     "prisma": "^5.11.1",
     "tailwindcss": "^4.2.0",
