@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { prisma } from "@/lib/prisma";
+import { userDb } from "@/lib/db";
 import { createToken, verifyPassword } from "@/lib/auth";
 
 const loginSchema = z.object({
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
   const { email, password } = parsed.data;
 
-  const user = await prisma.user.findUnique({ where: { email } });
+  const user = userDb.findByEmail(email);
   if (!user) {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { prisma } from "@/lib/prisma";
+import { userDb } from "@/lib/db";
 import { createToken, hashPassword } from "@/lib/auth";
 
 const registerSchema = z.object({
@@ -20,19 +20,17 @@ export async function POST(req: NextRequest) {
 
   const { email, password, name } = parsed.data;
 
-  const existing = await prisma.user.findUnique({ where: { email } });
+  const existing = userDb.findByEmail(email);
   if (existing) {
     return NextResponse.json({ error: "Email already in use" }, { status: 409 });
   }
 
   const hashed = await hashPassword(password);
 
-  const user = await prisma.user.create({
-    data: {
-      email,
-      password: hashed,
-      name,
-    },
+  const user = userDb.create({
+    email,
+    password: hashed,
+    name,
   });
 
   const token = await createToken({ userId: user.id });
