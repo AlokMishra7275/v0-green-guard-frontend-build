@@ -51,10 +51,12 @@ export default function AnalyticsPage() {
   const { data: aqiData } = useSWR<{
     success: boolean;
     data: CityAQI[];
-  }>("/api/aqi", fetcher);
+    timestamp?: string;
+    source?: string;
+  }>("/api/aqi", fetcher, { refreshInterval: 15000 });
 
   const trends = trendData?.data || [];
-  const cities = aqiData?.data || mockCities;
+  const cities = aqiData?.data?.length ? aqiData.data : mockCities;
 
   // Prepare chart data
   const chartData = trends.map((item) => ({
@@ -96,6 +98,9 @@ export default function AnalyticsPage() {
               </h1>
               <p className="text-muted-foreground">
                 Advanced visualization and analysis of air quality data
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Data source: {aqiData?.source || "mock"} | Last update: {aqiData?.timestamp ? new Date(aqiData.timestamp).toLocaleTimeString() : "--"}
               </p>
             </div>
 

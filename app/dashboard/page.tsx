@@ -29,12 +29,13 @@ export default function DashboardPage() {
     success: boolean;
     data: CityAQI[];
     timestamp: string;
-  }>("/api/aqi", fetcher, { refreshInterval: 60000 });
+    source?: string;
+  }>("/api/aqi", fetcher, { refreshInterval: 15000 });
 
   const { data: trendData, isLoading: trendLoading } = useSWR<{
     success: boolean;
     data: TrendData[];
-  }>("/api/trends?hours=24", fetcher, { refreshInterval: 60000 });
+  }>("/api/trends?hours=24", fetcher, { refreshInterval: 15000 });
 
   const cities = aqiData?.data || [];
   const trends = trendData?.data || [];
@@ -139,9 +140,14 @@ export default function DashboardPage() {
                 <h2 className="text-lg font-semibold text-foreground">
                   City Air Quality Index
                 </h2>
-                <span className="text-sm text-muted-foreground">
-                  Last updated: {aqiData?.timestamp ? new Date(aqiData.timestamp).toLocaleTimeString() : "--"}
-                </span>
+                <div className="text-sm text-muted-foreground flex gap-3">
+                  <span>
+                    Last updated: {aqiData?.timestamp ? new Date(aqiData.timestamp).toLocaleTimeString() : "--"}
+                  </span>
+                  <span>
+                    Source: {aqiData?.source ? aqiData.source : "mock"}
+                  </span>
+                </div>
               </div>
               
               <div className="grid sm:grid-cols-2 gap-4">
