@@ -74,6 +74,7 @@
     "@types/node": "^22",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "@vercel/speed-insights": "^2.0.0",
     "pnpm": "^10.32.1",
     "postcss": "^8.5",
     "prisma": "^5.11.1",
