@@ -22,10 +22,10 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".", // Required for paths to work correctly
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@prisma/client": ["./prisma/generated/client"] // Points TS to your custom Prisma output
     }
   },
   "include": [
@@ -33,7 +33,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "prisma/generated/client" // Ensure TS includes the generated files
   ],
   "exclude": [
     "node_modules"
