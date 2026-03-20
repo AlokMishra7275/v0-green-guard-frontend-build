@@ -1,10 +1,28 @@
-"scripts": {
-  "dev": "next dev",
-  "build": "prisma generate && next build",
-  "start": "next start",
-  "lint": "echo \"No lint configured. Install ESLint or add a config file to enable.\"",
-  "prisma": "prisma",
-  "db:dev": "prisma migrate dev --name init",
-  "db:push": "prisma db push",
-  "postinstall": "prisma generate"
+{
+  "name": "my-project",
+  "version": "0.1.0",
+  "private": true,
+
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "echo \"No lint configured.\"",
+    "prisma": "prisma",
+    "db:dev": "prisma migrate dev --name init",
+    "db:push": "prisma db push",
+    "postinstall": "prisma generate"
+  },
+
+  "dependencies": {
+    "@prisma/client": "^5.11.1",
+    "next": "16.1.7",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "swr": "^2.4.1"
+  },
+
+  "devDependencies": {
+    "prisma": "^5.11.1"
+  }
 }
