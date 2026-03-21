@@ -1,10 +1,8 @@
-// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "mongodb"
-  // The url line was removed from here
-}
-
-generator client {
-  provider = "prisma-client"
+  url      = env("DATABASE_URL")
 }
