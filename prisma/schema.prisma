@@ -4,5 +4,6 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("DATABASE_URL")
 }
+
+// Your models go here (User, etc.)
